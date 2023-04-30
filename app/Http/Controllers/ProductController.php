@@ -24,6 +24,12 @@ class ProductController extends Controller
         return view('productos.entrada');
     }
 
+    public function salida()
+    {
+        //
+        return view('productos.salida');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
