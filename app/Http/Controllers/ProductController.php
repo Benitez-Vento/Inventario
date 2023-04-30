@@ -18,6 +18,12 @@ class ProductController extends Controller
         return view('productos.index');
     }
 
+    public function entrada()
+    {
+        //
+        return view('productos.entrada');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

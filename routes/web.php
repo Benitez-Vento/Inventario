@@ -29,7 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::resource('productos', ProductController::class);
+Route::get('/entrada', [ProductController::class, 'entrada'])->name('entrada');
+
+
 
 require __DIR__.'/auth.php';
 
@@ -63,4 +67,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
-
