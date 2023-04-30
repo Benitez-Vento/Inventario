@@ -34,8 +34,6 @@ Route::resource('productos', ProductController::class);
 Route::get('/entrada', [ProductController::class, 'entrada'])->name('entrada');
 Route::get('/salida', [ProductController::class, 'salida'])->name('salida');
 
-
-
 require __DIR__.'/auth.php';
 
 use App\Http\Controllers\HomeController;
