@@ -50,9 +50,6 @@ class ProductController extends Controller
 
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'"
                            data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Seleccionar</a>';
-
-
-
                             return $btn;
                     })
                     ->rawColumns(['action'])

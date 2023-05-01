@@ -39,7 +39,7 @@ Route::resource('categoria', CategorieController::class);
 Route::resource('marca', BrandController::class);
 Route::get('/seleccion', [ProductController::class, 'index2'])->name('index2');
 
-Route::get('seleccion/{id}', [ProductController::class, 'index2'])->name('index3');
+//Route::get('/seleccion/{producto}/', [ProductController::class, 'index2'])->name('index3');
 
 
 

@@ -213,7 +213,7 @@
                 });
                 $('body').on('click', '.editPost', function() {
                     var id = $(this).data('id');
-                    $.get("{{ route('index3') }}" + '/' + id + '/edit', function(data) {
+                    $.get("{{ route('productos.index') }}" + '/' + id + '/edit', function(data) {
                         $('#modelHeading').html("Edit Post");
                         $('#savedata').val("edit-user");
                         $('#ajaxModelexa').modal('show');
