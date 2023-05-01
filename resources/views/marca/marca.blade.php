@@ -5,7 +5,7 @@
 <div class="row mt-4 mx-4">
     <div class="col-12">
         <div class="alert alert-light" role="alert">
-            CATEGORIAS
+            MARCAS
         </div>
 
     </div>
@@ -80,7 +80,7 @@
                 "previous": "Anterior"
                 }
             },
-            ajax: "{{ route('categoria.index') }}",
+            ajax: "{{ route('marca.index') }}",
             columns: [
                 {data: 'DT_RowIndex',name: 'DT_RowIndex'},
                 {data: 'nombre',name: 'nombre'},
@@ -97,7 +97,7 @@
         });
         $('body').on('click', '.editPost', function() {
             var id = $(this).data('id');
-            $.get("{{ route('categoria.index') }}" + '/' + id + '/edit', function(data) {
+            $.get("{{ route('marca.index') }}" + '/' + id + '/edit', function(data) {
                 $('#modelHeading').html("Edit Post");
                 $('#savedata').val("edit-user");
                 $('#ajaxModelexa').modal('show');
@@ -111,7 +111,7 @@
 
             $.ajax({
                 data: $('#postForm').serialize(),
-                url: "{{ route('categoria.store') }}",
+                url: "{{ route('marca.store') }}",
                 type: "POST",
                 dataType: 'json',
                 success: function(data) {
@@ -135,7 +135,7 @@
 
             $.ajax({
                 type: "DELETE",
-                url: "{{ route('categoria.store') }}" + '/' + id,
+                url: "{{ route('marca.store') }}" + '/' + id,
                 success: function(data) {
                     table.draw();
                 },

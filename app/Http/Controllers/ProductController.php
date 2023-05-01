@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Categorie;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use DataTables;
 
 class ProductController extends Controller
 {
@@ -12,9 +15,25 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        if ($request->ajax()) {
+            $produtos=Product::get();
+            return Datatables::of($produtos)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Edit</a>';
+
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deletePost">Delete</a>';
+
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+
         return view('productos.index');
     }
 
@@ -49,6 +68,17 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        Product::updateOrCreate(['id' => $request->id],
+        [
+        'nombre' => $request->nombre,
+        'imagenes' => $request->imagenes,
+        'precio_venta' => $request->precio_venta,
+        'stock' => $request->stock,
+        'categorie_id' => $request->categorie_id,
+        'brand_id' => $request->brand_id,
+        ]);
+
+        return response()->json(['success'=>'Post saved successfully.']);
     }
 
     /**
@@ -68,9 +98,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
+        $produtos = Product::find($id);
+        return response()->json($produtos);
     }
 
     /**
@@ -91,8 +123,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
+        Product::find($id)->delete();
+        return response()->json(['success'=>'Post deleted successfully.']);
     }
 }

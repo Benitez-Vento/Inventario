@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('productos', ProductController::class);
 Route::get('/entrada', [ProductController::class, 'entrada'])->name('entrada');
 Route::get('/salida', [ProductController::class, 'salida'])->name('salida');
+Route::resource('categoria', CategorieController::class);
+Route::resource('marca', BrandController::class);
 
 require __DIR__.'/auth.php';
 
