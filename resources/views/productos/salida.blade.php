@@ -18,11 +18,12 @@
             <div class="col">
                 <div class="card card border-dark border">
                     <div class="card-body">
-                        <div style="margin-left:30px; margin-right:30px; text-align:center">
+                        <div style="text-align:center">
                             <table class="table table-bordered data-table">
                                 <thead>
                                     <tr>
                                         <th>Codigo</th>
+
                                         <th>Nombre</th>
                                         <th>Stock</th>
                                         <th>Precio</th>
@@ -86,7 +87,57 @@
             </div>
         </div>
 
+        <div class="modal fade" id="ajaxModelexa" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modelHeading"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="postForm" name="postForm" class="form-horizontal">
 
+                            <input type="hidden" name="id" id="id">
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">nombre</label>
+                                <div class="col-sm-12">
+                                    <input type="double" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Precio de Venta</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="precio_venta" name="precio_venta" placeholder="Enter Name" value="" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Stock</label>
+                                <div class="col-sm-12">
+                                    <input type="date" class="form-control" id="stock" name="stock" placeholder="Enter Name" value="" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Codigo De Tarea</label>
+                                <div class="col-sm-12">
+                                    <input type="date" class="form-control" id="categorie_id" name="categorie_id" placeholder="Enter Name" value="" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Marca</label>
+                                <div class="col-sm-12">
+                                    <input type="date" class="form-control" id="brand_id" name="brand_id" placeholder="Enter Name" value="" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script type="text/javascript">
             $(function() {
 
@@ -120,10 +171,10 @@
                         }
                     },
                     ajax: "{{ route('index2') }}",
-                    columns: [{
-                            data: 'DT_RowIndex',
-                            name: 'DT_RowIndex'
-                        },
+                    columns: [
+
+                    {data: 'DT_RowIndex',name: 'DT_RowIndex'},
+
                         {
                             data: 'nombre',
                             name: 'nombre'
@@ -162,7 +213,7 @@
                 });
                 $('body').on('click', '.editPost', function() {
                     var id = $(this).data('id');
-                    $.get("{{ route('productos.index') }}" + '/' + id + '/edit', function(data) {
+                    $.get("{{ route('index3') }}" + '/' + id + '/edit', function(data) {
                         $('#modelHeading').html("Edit Post");
                         $('#savedata').val("edit-user");
                         $('#ajaxModelexa').modal('show');

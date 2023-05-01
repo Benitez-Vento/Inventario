@@ -59,7 +59,7 @@ class ProductController extends Controller
                     ->make(true);
         }
 
-        return view('productos.index');
+        return view('productos.salida');
     }
 
     public function entrada()
