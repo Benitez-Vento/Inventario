@@ -37,6 +37,12 @@ Route::get('/entrada', [ProductController::class, 'entrada'])->name('entrada');
 Route::get('/salida', [ProductController::class, 'salida'])->name('salida');
 Route::resource('categoria', CategorieController::class);
 Route::resource('marca', BrandController::class);
+Route::get('/seleccion', [ProductController::class, 'index2'])->name('index2');
+
+
+
+
+
 
 require __DIR__.'/auth.php';
 

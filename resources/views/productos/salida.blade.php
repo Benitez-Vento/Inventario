@@ -5,9 +5,216 @@
     <div class="row mt-4 mx-4">
         <div class="col-12">
             <div class="alert alert-light" role="alert">
-                sALIDA DE PRODUCTOS
+                SALIDA DE PRODUCTOS
             </div>
 
         </div>
     </div>
 @endsection
+
+@section('contenido')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card card border-dark border">
+                    <div class="card-body">
+                        <div style="margin-left:30px; margin-right:30px; text-align:center">
+                            <table class="table table-bordered data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Codigo</th>
+                                        <th>Nombre</th>
+                                        <th>Stock</th>
+                                        <th>Precio</th>
+                                        <th>Categoria</th>
+                                        <th>Marca</th>
+                                        <th>Escoger</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card border-dark border">
+                    <div class="card-body">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto">
+                                <div class="card">
+                                    <h5 style="text-align: center">VENTA</h5>
+                                    <div class="card-body card border-dark border">
+                                        cliente: <input type="text" class="form-control" id="inputPassword">
+                                        DNI: <input type="text" class="form-control" id="inputPassword">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <br><br>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Editar</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            $(function() {
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                var table = $('.data-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    language: {
+                        "decimal": "",
+                        "emptyTable": "No hay información",
+                        "info": "Mostrando Pagina _START_ con _TOTAL_ Registros",
+                        "infoEmpty": "Sin resultados encontrados en la cantidad",
+                        "infoFiltered": " total de _MAX_ registros",
+                        "infoPostFix": "",
+                        "thousands": ",",
+                        "lengthMenu": "Mostrar _MENU_ Registros",
+                        "loadingRecords": "Cargando...",
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "zeroRecords": "Sin resultados encontrados",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Ultimo",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        }
+                    },
+                    ajax: "{{ route('index2') }}",
+                    columns: [{
+                            data: 'DT_RowIndex',
+                            name: 'DT_RowIndex'
+                        },
+                        {
+                            data: 'nombre',
+                            name: 'nombre'
+                        },
+                        {
+                            data: 'precio_venta',
+                            name: 'precio_venta'
+                        },
+                        {
+                            data: 'stock',
+                            name: 'stock'
+                        },
+                        {
+                            data: 'categorie_id',
+                            name: 'categorie_id'
+                        },
+                        {
+                            data: 'brand_id',
+                            name: 'brand_id'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        },
+                    ]
+                });
+
+                $('#createNewPost').click(function() {
+                    $('#savedata').val("create-post");
+                    $('#id').val('');
+                    $('#postForm').trigger("reset");
+                    $('#modelHeading').html("Agregando Producto");
+                    $('#ajaxModelexa').modal('show');
+                });
+                $('body').on('click', '.editPost', function() {
+                    var id = $(this).data('id');
+                    $.get("{{ route('productos.index') }}" + '/' + id + '/edit', function(data) {
+                        $('#modelHeading').html("Edit Post");
+                        $('#savedata').val("edit-user");
+                        $('#ajaxModelexa').modal('show');
+                        $('#id').val(data.id);
+                        $('#nombre').val(data.nombre);
+                        $('#imagen').val(data.imagen);
+                        $('#precio_venta').val(data.precio_venta);
+                        $('#stock').val(data.stock);
+                        $('#categorie_id').val(data.categorie_id);
+                        $('#brand_id').val(data.brand_id);
+                    })
+                });
+                $('#savedata').click(function(e) {
+                    e.preventDefault();
+                    $(this).html('Sending..');
+
+                    $.ajax({
+                        data: $('#postForm').serialize(),
+                        url: "{{ route('productos.store') }}",
+                        type: "POST",
+                        dataType: 'json',
+                        success: function(data) {
+
+                            $('#postForm').trigger("reset");
+                            $('#ajaxModelexa').modal('hide');
+                            table.draw();
+
+                        },
+                        error: function(data) {
+                            console.log('Error:', data);
+                            $('#savedata').html('Save Changes');
+                        }
+                    });
+                });
+
+                $('body').on('click', '.deletePost', function() {
+
+                    var id = $(this).data("id");
+                    confirm("Estas seguro de eliminar el producto?");
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ route('productos.store') }}" + '/' + id,
+                        success: function(data) {
+                            table.draw();
+                        },
+                        error: function(data) {
+                            console.log('Error:', data);
+                        }
+                    });
+                });
+
+            });
+        </script>
+    @endsection

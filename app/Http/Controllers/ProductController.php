@@ -24,9 +24,34 @@ class ProductController extends Controller
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
 
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Edit</a>';
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'"
+                           data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Edit</a>';
 
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deletePost">Delete</a>';
+                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'"
+                           data-original-title="Delete" class="btn btn-danger btn-sm deletePost">Delete</a>';
+
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+
+        return view('productos.index');
+    }
+
+    public function index2(Request $request)
+    {
+        //
+        if ($request->ajax()) {
+            $produtos=Product::get();
+            return Datatables::of($produtos)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+
+                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'"
+                           data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Seleccionar</a>';
+
+
 
                             return $btn;
                     })
@@ -43,11 +68,16 @@ class ProductController extends Controller
         return view('productos.entrada');
     }
 
+
     public function salida()
     {
         //
         return view('productos.salida');
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
