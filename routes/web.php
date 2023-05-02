@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::get('/salida', [ProductController::class, 'salida'])->name('salida');
 Route::resource('categoria', CategorieController::class);
 Route::resource('marca', BrandController::class);
 Route::get('/seleccion', [ProductController::class, 'index2'])->name('index2');
+
+Route::resource('clientes', CustomerController::class);
 
 //Route::get('/seleccion/{producto}/', [ProductController::class, 'index2'])->name('index3');
 

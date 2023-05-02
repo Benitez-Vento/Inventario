@@ -54,6 +54,12 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //
+        Brand::updateOrCreate(['id' => $request->id],
+        [
+        'nombre' => $request->nombre,
+        ]);
+
+        return response()->json(['success'=>'Post saved successfully.']);
     }
 
     /**
@@ -73,9 +79,11 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit($id)
     {
         //
+        $marca = Brand::find($id);
+        return response()->json($marca);
     }
 
     /**
@@ -96,8 +104,10 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy($id)
     {
         //
+        Brand::find($id)->delete();
+        return response()->json(['success'=>'Post deleted successfully.']);
     }
 }

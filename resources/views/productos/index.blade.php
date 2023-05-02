@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="double" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
                         </div>
                     </div>
 
@@ -65,22 +65,27 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Stock</label>
                         <div class="col-sm-12">
-                            <input type="date" class="form-control" id="stock" name="stock" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter Name" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Codigo De Tarea</label>
                         <div class="col-sm-12">
-                            <input type="date" class="form-control" id="categorie_id" name="categorie_id" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="categorie_id" name="categorie_id" placeholder="Enter Name" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Marca</label>
                         <div class="col-sm-12">
-                            <input type="date" class="form-control" id="brand_id" name="brand_id" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="brand_id" name="brand_id" placeholder="Enter Name" value="" required>
                         </div>
+                    </div>
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="savedata" value="create">Guardar
+                        </button>
                     </div>
                 </form>
             </div>
@@ -124,7 +129,7 @@
                 {data: 'DT_RowIndex',name: 'DT_RowIndex'},
                 {data: 'nombre',name: 'nombre'},
                 {data: 'imagen',name: 'imagen'},
-                {data: 'precio_venta',name: 'cantidad_dias'},
+                {data: 'precio_venta',name: 'precio_venta'},
                 {data: 'stock',name: 'stock'},
                 {data: 'categorie_id',name: 'categorie_id'},
                 {data: 'brand_id',name: 'brand_id'},

@@ -54,6 +54,12 @@ class CategorieController extends Controller
     public function store(Request $request)
     {
         //
+        Categorie::updateOrCreate(['id' => $request->id],
+        [
+        'nombre' => $request->nombre,
+        ]);
+
+        return response()->json(['success'=>'Post saved successfully.']);
     }
 
     /**
@@ -62,7 +68,7 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show(Categorie $categoria)
     {
         //
     }
@@ -73,9 +79,11 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit($id)
     {
         //
+        $categoria = Categorie::find($id);
+        return response()->json($categoria);
     }
 
     /**
@@ -85,7 +93,7 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $categorie)
+    public function update(Request $request, Categorie $categoria)
     {
         //
     }
@@ -96,8 +104,10 @@ class CategorieController extends Controller
      * @param  \App\Models\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $categorie)
+    public function destroy($id)
     {
         //
+        Categorie::find($id)->delete();
+        return response()->json(['success'=>'Post deleted successfully.']);
     }
 }

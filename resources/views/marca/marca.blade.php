@@ -40,8 +40,13 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="double" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
                         </div>
+                    </div>
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary" id="savedata" value="create">Guardar
+                        </button>
                     </div>
                 </form>
             </div>
