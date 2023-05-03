@@ -70,16 +70,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Codigo De Tarea</label>
+                        <label for="name" class="col-sm-2 control-label">Categoria</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="categorie_id" name="categorie_id" placeholder="Enter Name" value="" required>
+                            <select class="form-select" id="categorie_id" name="categorie_id" aria-label="Default select example">
+                                <option selected>Escoger</option>
+                                @foreach ($categorias as $categoria)
+                                    <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Marca</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="brand_id" name="brand_id" placeholder="Enter Name" value="" required>
+                            <select class="form-select" id="brand_id" name="brand_id" aria-label="Default select example">
+                                    <option selected>Escoger</option>
+                                    @foreach ($marcas as $marca)
+                                        <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+                                    @endforeach
+                            </select>
                         </div>
                     </div>
 
@@ -118,10 +128,10 @@
                 "search": "Buscar:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
-                "first": "Primero",
-                "last": "Ultimo",
-                "next": "Siguiente",
-                "previous": "Anterior"
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
                 }
             },
             ajax: "{{ route('productos.index') }}",
@@ -131,8 +141,8 @@
                 {data: 'imagen',name: 'imagen'},
                 {data: 'precio_venta',name: 'precio_venta'},
                 {data: 'stock',name: 'stock'},
-                {data: 'categorie_id',name: 'categorie_id'},
-                {data: 'brand_id',name: 'brand_id'},
+                {data: 'categorie.nombre',name: 'categorie.nombre'},
+                {data: 'brand.nombre',name: 'brand.nombre'},
                 {data: 'action',name: 'action',orderable: false,searchable: false},
             ]
         });
@@ -155,8 +165,8 @@
                 $('#imagen').val(data.imagen);
                 $('#precio_venta').val(data.precio_venta);
                 $('#stock').val(data.stock);
-                $('#categorie_id').val(data.categorie_id);
-                $('#brand_id').val(data.brand_id);
+                $('#categorie_id').val(data.categorie.nombre);
+                $('#brand_id').val(data.brand.nombre);
             })
         });
         $('#savedata').click(function(e) {

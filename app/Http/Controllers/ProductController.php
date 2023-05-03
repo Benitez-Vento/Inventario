@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Categorie;
 use App\Models\Brand;
+use App\Models\Categorie;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -18,6 +18,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         //
+        $categorias=Categorie::all();
+        $marcas=Brand::all();
         if ($request->ajax()) {
             $produtos=Product::get();
             return Datatables::of($produtos)
@@ -25,10 +27,10 @@ class ProductController extends Controller
                     ->addColumn('action', function($row){
 
                            $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'"
-                           data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Edit</a>';
+                           data-original-title="Edit" class="edit btn btn-primary btn-sm editPost">Editar</a>';
 
                            $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'"
-                           data-original-title="Delete" class="btn btn-danger btn-sm deletePost">Delete</a>';
+                           data-original-title="Delete" class="btn btn-danger btn-sm deletePost">Eliminar</a>';
 
                             return $btn;
                     })
@@ -36,7 +38,7 @@ class ProductController extends Controller
                     ->make(true);
         }
 
-        return view('productos.index');
+        return view('productos.index',compact('categorias'), compact('marcas'));
     }
 
     public function index2(Request $request)
@@ -71,9 +73,6 @@ class ProductController extends Controller
         //
         return view('productos.salida');
     }
-
-
-
 
 
     /**
