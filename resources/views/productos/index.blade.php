@@ -12,8 +12,9 @@
 @endsection
 
 @section('contenido')
-<div style="margin-left:30px; margin-right:30px; text-align:center">
+<div style="margin-left:30px; margin-right:30px; text-align:left">
     <table class="table table-bordered data-table">
+        <a class="btn btn-info" href="javascript:void(0)" id="createNewPost"> Agregar</a>
         <thead>
             <tr>
                 <th>Codigo</th>
