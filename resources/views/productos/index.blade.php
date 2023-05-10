@@ -45,28 +45,28 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Imagen</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="imagen" name="imagen" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="imagen" name="imagen" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Precio de Venta</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="precio_venta" name="precio_venta" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="precio_venta" name="precio_venta" value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Stock</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="stock" name="stock" value="" required>
                         </div>
                     </div>
 

@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre" value="" required>
                         </div>
                     </div>
 
