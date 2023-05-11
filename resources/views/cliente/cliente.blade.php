@@ -51,7 +51,11 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">tipo_documento</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="tipo_documento" name="tipo_documento"  value="" required>
+                            <select class="form-select" id="brand_id" name="brand_id" aria-label="Default select example">
+                                <option selected>Escoger</option>
+                                    <option>{{"DNI"}}</option>
+                                    <option>{{"RUC"}}</option>
+                        </select>
                         </div>
                     </div>
 
