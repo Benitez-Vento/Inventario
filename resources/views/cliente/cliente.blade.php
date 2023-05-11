@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nombre" name="nombre"  value="" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre"  value="" >
                         </div>
                     </div>
 
@@ -52,34 +52,33 @@
                         <label for="name" class="col-sm-2 control-label">tipo_documento</label>
                         <div class="col-sm-12">
                             <select class="form-select" id="tipo_documento" name="tipo_documento" aria-label="Default select example">
-                                <option selected>Escoger</option>
-                                    <option>{{"DNI"}}</option>
-                                    <option>{{"RUC"}}</option>
-                        </select>
+                                    <option selected>Escoger</option>
+                                        <option>{{"DNI"}}</option>
+                                        <option>{{"RUC"}}</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">numero</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="numero" name="numero"  value="" required>
+                            <input type="text" class="form-control" id="numero" name="numero"  value="" >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">telefono</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="telefono" name="telefono"  value="" required>
+                            <input type="text" class="form-control" id="telefono" name="telefono"  value="" >
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">correo</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="correo" name="correo"  value="" required>
+                            <input type="email" class="form-control" id="correo" name="correo"  value="" >
                         </div>
                     </div>
-
 
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary" id="savedata" value="create">Guardar
@@ -172,7 +171,18 @@
 
                 },
                 error: function(data) {
-                    console.log('Error:', data);
+                    console.log(data);
+                    let response = JSON.parse(data.responseText);
+                    let errors = response.errors;
+
+                    $.each(errors,function(index, value){
+                        $("#message_"+index).html(value);
+                        $("#error_"+index).removeClass("invalid-feedback");
+                        
+                        console.log('index: ' + index + ', this value: ' + value);
+                    });
+
+                    console.log(response);
                     $('#savedata').html('Save Changes');
                 }
             });
