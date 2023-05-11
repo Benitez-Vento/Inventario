@@ -97,7 +97,6 @@ class ProductController extends Controller
         Product::updateOrCreate(['id' => $request->id],
         [
         'nombre' => $request->nombre,
-        'imagen' => $request->imagen,
         'precio_venta' => $request->precio_venta,
         'stock' => $request->stock,
         'categorie_id' => $request->categorie_id,

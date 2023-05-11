@@ -19,7 +19,6 @@
             <tr>
                 <th>Codigo</th>
                 <th>Nombre</th>
-                <th>Imagen</th>
                 <th>Precio de Venta</th>
                 <th>Stock</th>
                 <th>Codigo de Tarea</th>
@@ -49,12 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Imagen</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="imagen" name="imagen" value="" required>
-                        </div>
-                    </div>
+                   
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Precio de Venta</label>
@@ -139,7 +133,6 @@
             columns: [
                 {data: 'DT_RowIndex',name: 'DT_RowIndex'},
                 {data: 'nombre',name: 'nombre'},
-                {data: 'imagen',name: 'imagen'},
                 {data: 'precio_venta',name: 'precio_venta'},
                 {data: 'stock',name: 'stock'},
                 {data: 'categorie.nombre',name: 'categorie.nombre'},
@@ -163,7 +156,6 @@
                 $('#ajaxModelexa').modal('show');
                 $('#id').val(data.id);
                 $('#nombre').val(data.nombre);
-                $('#imagen').val(data.imagen);
                 $('#precio_venta').val(data.precio_venta);
                 $('#stock').val(data.stock);
                 $('#categorie_id').val(data.categorie.nombre);
