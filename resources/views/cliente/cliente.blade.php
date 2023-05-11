@@ -44,35 +44,35 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="nombre" name="nombre"  value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">tipo_documento</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="tipo_documento" name="tipo_documento" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="tipo_documento" name="tipo_documento"  value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">numero</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="numero" name="numero" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="numero" name="numero"  value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">telefono</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="telefono" name="telefono"  value="" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">correo</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="correo" name="correo" placeholder="Enter Name" value="" required>
+                            <input type="text" class="form-control" id="correo" name="correo"  value="" required>
                         </div>
                     </div>
 
