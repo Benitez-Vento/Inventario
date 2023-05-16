@@ -42,26 +42,35 @@
 
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Nombre</label>
+                        <label for="name" id="error_nombre" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="nombre" name="nombre" value="" required>
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_nombre"></strong>
+                     </div>
                     </div>
 
                    
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Precio de Venta</label>
+                        <label for="name"  id="error_precio_venta" class="col-sm-2 control-label">Precio de Venta</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="precio_venta" name="precio_venta" value="" required>
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_precio_venta"></strong>
+                     </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Stock</label>
+                        <label for="name"  id="error_stock" class="col-sm-2 control-label">Stock</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="stock" name="stock" value="" required>
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_stock"></strong>
+                     </div>
                     </div>
 
                     <div class="form-group">
@@ -179,7 +188,19 @@
 
                 },
                 error: function(data) {
-                    console.log('Error:', data);
+                    console.log(data);
+                    let response = JSON.parse(data.responseText);
+                    let errors = response.errors;
+
+                    // validando errrores 
+                    $.each(errors,function(index, value){
+                        $("#message_"+index).html(value);
+                        $("#error_"+index).removeClass("invalid-feedback");
+                        
+                        console.log('index: ' + index + ', this value: ' + value);
+                    });
+
+                    console.log(response);
                     $('#savedata').html('Save Changes');
                 }
             });
