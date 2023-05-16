@@ -24,7 +24,6 @@
                                 <tr>
                                     <th>Codigo</th>
                                     <th>Nombre</th>
-                                    <th>imagen</th>
                                     <th>Stock</th>
                                     <th>Precio</th>
                                     <th>Categoria</th>
@@ -133,12 +132,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">imagen</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" id="imagen" name="imagen" placeholder="Enter Name" value="" required>
-                            </div>
-                        </div>
+                       
 
 
                         <div class="form-group">
@@ -226,10 +220,7 @@
                         data: 'nombre',
                         name: 'nombre'
                     },
-                    {
-                        data: 'imagen',
-                        name: 'imagen'
-                    },
+                   
                     {
                         data: 'precio_venta',
                         name: 'precio_venta'
@@ -270,7 +261,6 @@
                     $('#ajaxModelexa').modal('show');
                     $('#id').val(data.id);
                     $('#nombre').val(data.nombre);
-                    $('#imagen').val(data.imagen);
                     $('#precio_venta').val(data.precio_venta);
                     $('#stock').val(data.stock);
                     $('#categorie_id').val(data.categorie_id);

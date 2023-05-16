@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ValidandoRequest;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
 use DataTables;
@@ -51,7 +52,7 @@ class CategorieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidandoRequest $request)
     {
         //
         Categorie::updateOrCreate(['id' => $request->id],
