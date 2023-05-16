@@ -5,7 +5,7 @@
 <div class="row mt-4 mx-4">
     <div class="col-12">
         <div class="alert alert-light" role="alert">
-            LISTA DE PRODUCTOS
+            LISTA DE Clientes
         </div>
     </div>
 </div>
@@ -41,43 +41,60 @@
                 <form id="postForm" name="postForm" class="form-horizontal">
 
                     <input type="hidden" name="id" id="id">
+
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Nombre</label>
+                        <label for="name" id="error_nombre" class="col-sm-2 control-label" >Nombre</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="nombre" name="nombre"  value="" >
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_nombre"></strong>
+                          </div>
+                        
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">tipo_documento</label>
+                        <label for="name" id="error_tipo_documento" class="col-sm-2 control-label">tipo_documento</label>
                         <div class="col-sm-12">
                             <select class="form-select" id="tipo_documento" name="tipo_documento" aria-label="Default select example">
                                     <option selected>Escoger</option>
                                         <option>{{"DNI"}}</option>
                                         <option>{{"RUC"}}</option>
                             </select>
+                            <div  class="text-danger" style="text-align:center" role="alert" >
+                                <strong id="message_tipo_documento"></strong>
+                              </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">numero</label>
+                        <label for="name" id="error_numero" class="col-sm-2 control-label">numero</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="numero" name="numero"  value="" >
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_numero"></strong>
+                          </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">telefono</label>
+                        <label for="name"  id="error_telefono" class="col-sm-2 control-label">telefono</label>
                         <div class="col-sm-12">
                             <input type="text" class="form-control" id="telefono" name="telefono"  value="" >
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_telefono"></strong>
+                          </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">correo</label>
+                        <label for="name" id="error_correo" class="col-sm-2 control-label">correo</label>
                         <div class="col-sm-12">
                             <input type="email" class="form-control" id="correo" name="correo"  value="" >
                         </div>
+                        <div  class="text-danger" style="text-align:center" role="alert" >
+                            <strong id="message_correo"></strong>
+                          </div>
                     </div>
 
                     <div class="col-sm-offset-2 col-sm-10">
@@ -137,7 +154,7 @@
             $('#savedata').val("create-post");
             $('#id').val('');
             $('#postForm').trigger("reset");
-            $('#modelHeading').html("Agregando Producto");
+            $('#modelHeading').html("Agregando Cliente");
             $('#ajaxModelexa').modal('show');
         });
         $('body').on('click', '.editPost', function() {
@@ -175,6 +192,7 @@
                     let response = JSON.parse(data.responseText);
                     let errors = response.errors;
 
+                    // validando errrores 
                     $.each(errors,function(index, value){
                         $("#message_"+index).html(value);
                         $("#error_"+index).removeClass("invalid-feedback");
