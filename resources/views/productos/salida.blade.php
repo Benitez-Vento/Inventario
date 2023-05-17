@@ -132,7 +132,7 @@
                             </div>
                         </div>
 
-                       
+
 
 
                         <div class="form-group">
@@ -210,40 +210,14 @@
                 },
                 ajax: "{{ route('index2') }}",
                 columns: [
-
-                    {
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
-
-                    {
-                        data: 'nombre',
-                        name: 'nombre'
-                    },
-                   
-                    {
-                        data: 'precio_venta',
-                        name: 'precio_venta'
-                    },
-                    {
-                        data: 'stock',
-                        name: 'stock'
-                    },
-                    {
-                        data: 'categorie_id',
-                        name: 'categorie_id'
-                    },
-                    {
-                        data: 'brand_id',
-                        name: 'brand_id'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                ]
+                {data: 'DT_RowIndex',name: 'DT_RowIndex'},
+                {data: 'nombre',name: 'nombre'},
+                {data: 'precio_venta',name: 'precio_venta'},
+                {data: 'stock',name: 'stock'},
+                {data: 'categorie.nombre',name: 'categorie.nombre'},
+                {data: 'brand.nombre',name: 'brand.nombre'},
+                {data: 'action',name: 'action',orderable: false,searchable: false},
+            ]
             });
 
             $('#createNewPost').click(function() {
@@ -263,8 +237,8 @@
                     $('#nombre').val(data.nombre);
                     $('#precio_venta').val(data.precio_venta);
                     $('#stock').val(data.stock);
-                    $('#categorie_id').val(data.categorie_id);
-                    $('#brand_id').val(data.brand_id);
+                    $('#categorie_id').val(data.categorie.nombre);
+                    $('#brand_id').val(data.brand.nombre);
                 })
             });
             $('#savedata').click(function(e) {

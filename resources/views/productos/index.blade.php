@@ -51,7 +51,7 @@
                      </div>
                     </div>
 
-                   
+
 
                     <div class="form-group">
                         <label for="name"  id="error_precio_venta" class="col-sm-2 control-label">Precio de Venta</label>
@@ -192,11 +192,11 @@
                     let response = JSON.parse(data.responseText);
                     let errors = response.errors;
 
-                    // validando errrores 
+                    // validando errrores
                     $.each(errors,function(index, value){
                         $("#message_"+index).html(value);
                         $("#error_"+index).removeClass("invalid-feedback");
-                        
+
                         console.log('index: ' + index + ', this value: ' + value);
                     });
 
